@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - gcc -static -o hello hello.c
+      - echo 'Building docker image'
+      - docker build -t dind_test .
+      - echo 'Running container'
+      - docker run dind_test
+
+artifacts:
+  type: zip
+  files:
+    - 'Dockerfile'
